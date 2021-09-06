@@ -36,7 +36,7 @@ client.connect(err => {
         res.send(result.insertedCount > 0)
       })
   })
-
+  
 
   app.post('/addAdmin', (req, res) => {
     const newAdmin = req.body;
