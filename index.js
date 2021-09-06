@@ -38,6 +38,15 @@ client.connect(err => {
   })
 
 
+  app.post('/addAdmin', (req, res) => {
+    const newAdmin = req.body;
+    adminCollection.insertOne(newAdmin)
+      .then(result => {
+        res.send(result.insertedCount > 0)
+      })
+  })
+
+
   app.get('/blog', (req, res) => {
     blogCollection.find()
       .toArray((err, blogs) => {
