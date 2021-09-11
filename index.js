@@ -62,7 +62,7 @@ client.connect(err => {
         res.send(blogs[0]);
       })
   })
-
+  
 
   app.get('/categoryName', (req, res) => {
     blogCollection.find({ category: req.query.category })
