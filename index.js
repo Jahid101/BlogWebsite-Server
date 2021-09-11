@@ -36,7 +36,7 @@ client.connect(err => {
         res.send(result.insertedCount > 0)
       })
   })
-  
+
 
   app.post('/addAdmin', (req, res) => {
     const newAdmin = req.body;
@@ -64,13 +64,21 @@ client.connect(err => {
   })
 
 
+  app.get('/categoryName', (req, res) => {
+    blogCollection.find({ category: req.query.category })
+      .toArray((err, categories) => {
+        res.send(categories);
+      })
+  })
+
+
   app.post('/checkAdmin', (req, res) => {
     const email = req.body.email;
     adminCollection.find({ email: email })
-        .toArray((err, admins) => {
-            res.send(admins.length > 0);
-        })
-})
+      .toArray((err, admins) => {
+        res.send(admins.length > 0);
+      })
+  })
 
 
   app.post('/addFeedback', (req, res) => {
